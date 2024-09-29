@@ -23,11 +23,23 @@ export default function Prueba(){
           <ul className="glide__slides">
             <li className="glide__slide">
                 <img src="../../../public/mulan.png" alt="mulan-img" />
-                <button>VER AHORA</button>
-                <button>VER DESPUES</button>
+                <div className="buttons-wacht">
+                    <button className='button-now'>VER AHORA</button>
+                    <button className='button-after'>VER DESPUES</button>
+                </div>
             </li>
-            <li className="glide__slide"><img src="../../../public/raya.png" alt="mulan-img" /></li>
-            <li className="glide__slide"><img src="../../../public/unidos.png" alt="mulan-img"/></li>
+            <li className="glide__slide"><img src="../../../public/raya.png" alt="mulan-img" />
+                <div className="buttons-wacht">
+                    <button className='button-now'>VER AHORA</button>
+                    <button className='button-after'>VER DESPUES</button>
+                </div>
+            </li>
+            <li className="glide__slide"><img src="../../../public/unidos.png" alt="mulan-img"/>
+                <div className="buttons-wacht">
+                    <button className='button-now'>VER AHORA</button>
+                    <button className='button-after'>VER DESPUES</button>
+                </div>
+            </li>
           </ul>
         </div>
       </div>
