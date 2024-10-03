@@ -1,6 +1,13 @@
+import { useState } from "react";
+import useMovies from "../../hooks/useMovies"
+import Modal from "../../modals/Modal";
+import './no-results.css'
+
 function ListofMovies({ movies }){
     const roundRating = (num) => Math.round(num*10)/10;
+    const [modal,setModal] = useState(false)
     return(
+        <>
         <div className="cards-movies">
         {
             movies.map((movie)=>(
@@ -18,26 +25,42 @@ function ListofMovies({ movies }){
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
                     alt={movie.title} 
                     className="card-images"
+                    onClick={()=> {setModal(!modal)}}
                 />
                 </div>
             </ul>
             )
             )
          }
+        <Modal
+        modal={modal}
+        setModal={setModal}
+        >
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum ipsam quam animi, explicabo molestias dolores molestiae nobis voluptate, deserunt vel accusamus quod iure! Hic, vero ipsa at debitis rerum quisquam.</p>
+        </Modal>
         </div>
+    </>
     )
 }
 
-function NoMoviesResults () {
+function NoMoviesResults ({keyword}) {
   return (
-    <p>No se encontraron películas para esta búsqueda</p>
+    <section className="no-results-movies"> 
+        <img 
+            src="../../../public/Stuck at Home Searching.svg" 
+            alt="No results search mocies" 
+            className="no-results-img"
+            />    
+        <p>No se encontraron películas para esta búsqueda {keyword}</p>
+    </section>
   )
 }
 
-function ResultsMovies({movies}){
+function ResultsMovies(){
+    const {movies, keyword} = useMovies();
     const list = movies?.length > 0;
     return(
-        list ?<ListofMovies movies={movies}/>:<NoMoviesResults/>
+        list ?<ListofMovies movies={movies}/>:<NoMoviesResults keyword={keyword} />
       )
 }
 export default ResultsMovies

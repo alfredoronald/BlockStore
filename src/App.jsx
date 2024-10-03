@@ -7,6 +7,7 @@ import AllMovies from './pages/all-movies/all-movies'
 import MoreValuedMovies from './pages/more-valued-movies/more-valued'
 import LessValuedMovies from './pages/less-valued-movies/less-valued'
 import SearchMovies from './components/search-movies/search-movies'
+import Modal from './modals/Modal'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/more-valued-movies" element={<MoreValuedMovies/>}/>
           <Route path="/less-valued-movies" element={<LessValuedMovies/>}/>
           <Route path="/searchmovie" element={<SearchMovies/>}/>
+          <Route path="/modal" element={<Modal/>}/>
         </Routes>
       </Router>
     </>
