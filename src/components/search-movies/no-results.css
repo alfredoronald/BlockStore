@@ -1,12 +1,11 @@
-.no-results-movies{
-    display: grid;
-    justify-content: center;
+.no-results-movies {
+  display: grid;
+  justify-content: center;
 }
-.no-results-img{
-
-    height: 300px;
-    width: 400px;
+.no-results-img {
+  height: 300px;
+  width: 400px;
 }
-.no-results-movies p{
-   font-size: 20px;
+.no-results-movies p {
+  font-size: 20px;
 }

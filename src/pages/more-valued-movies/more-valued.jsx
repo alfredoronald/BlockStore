@@ -1,12 +1,12 @@
-import Prueba from "../../components/carousel/carousel";
-import Movies from "../../components/Movies/movies";
+import Prueba from '../../components/carousel/carousel'
+import Movies from '../../components/Movies/movies'
 
-export default function MoreValuedMovies(){
-    return(
-        <>
-        <Prueba/>
-        <h1>Peliculas mas valoradas</h1>
-        <Movies/>
-        </>
-    )
+export default function MoreValuedMovies() {
+  return (
+    <>
+      <Prueba />
+      <h1>Peliculas mas valoradas</h1>
+      <Movies />
+    </>
+  )
 }

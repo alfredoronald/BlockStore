@@ -1,45 +1,43 @@
-.modal-movies{
-    position: fixed;
-    background-color: rgba(0, 0, 0, .83);
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    
+.modal-movies {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.83);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }
-.wacth-movie{
-    margin:200px 150px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
-}
-
-.header-modal{
-    display: flex;
-    justify-content: end;
-    margin-bottom: 50px;
-}
-.button-delete{
-    background: transparent;
-    border: none;
-    cursor: pointer;
+.wacth-movie {
+  margin: 200px 150px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-.modal-movies p{
-    display: flex;
-    color: #fff;
+.header-modal {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 50px;
+}
+.button-delete {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 
+.modal-movies p {
+  display: flex;
+  color: #fff;
 }
-.image-movie{
-    display: inline-block;
-    overflow: visible;
-    padding: 20px;
-    perspective: 1000px;
+.image-movie {
+  display: inline-block;
+  overflow: visible;
+  padding: 20px;
+  perspective: 1000px;
 }
 
-.description-movie ul{
-    display: flex;
-    justify-content: space-between;
+.description-movie ul {
+  display: flex;
+  justify-content: space-between;
 }
-.modal-movies .movie-date{
-    color: rgb(133, 133, 133);
+.modal-movies .movie-date {
+  color: rgb(133, 133, 133);
 }
