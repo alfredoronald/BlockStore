@@ -1,10 +1,11 @@
-import Prueba from '../../components/carousel/carousel'
+import Carousel from '../../components/carousel/carousel'
+
 import Movies from '../../components/movies/movies'
 
 export default function AllMovies() {
   return (
     <>
-      <Prueba />
+      <Carousel/>
       <h1>Todas las peliculas</h1>
       <Movies />
     </>

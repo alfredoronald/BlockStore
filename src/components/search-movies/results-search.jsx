@@ -15,12 +15,15 @@ function ListofMovies({ movies }) {
     setSelectedMovie(null)
     setModal(false)
   }
+  const getrating = (rating) => {
+    return rating > 6 ? 'rating-vote-more' : 'rating-vote-less'
+  }
   return (
     <>
       <div className="cards-movies">
         {movies.map((movie) => (
           <ul key={movie.id}>
-            <div className="rating-vote">
+            <div className={`rating-vote ${getrating(movie.vote_average)}`}>
               <strong className="rating-movies">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -49,13 +52,13 @@ function ListofMovies({ movies }) {
         ))}
         {selectedMovie && (
           <Modal
-            img={selectedMovie.poster_path}
             title={selectedMovie.title}
             text={selectedMovie.overview}
             date={selectedMovie.release_date}
+            image={selectedMovie.poster_path}
             average={selectedMovie.vote_average}
-            modal={modal}
             setModal={closeModal}
+            modal={modal}
           />
         )}
       </div>

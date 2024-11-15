@@ -1,8 +1,17 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BlockStore is a movie search engine, this project uses react and javascript technology.
 
-Currently, two official plugins are available:
+we start by cloning the repository
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+git clone https://github.com/usuario/repositorio.git
+cd BlockStore
+```
+
+To start the project use the following command
+
+```
+npm install
+npm run dev
+```
