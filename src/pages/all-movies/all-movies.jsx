@@ -5,7 +5,7 @@ import Movies from '../../components/movies/movies'
 export default function AllMovies() {
   return (
     <>
-      <Carousel/>
+      <Carousel />
       <h1>Todas las peliculas</h1>
       <Movies />
     </>

@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 import './modal.css'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
@@ -7,8 +9,8 @@ Modal.propTypes = {
   date: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   average: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  setModal: PropTypes.func.isRequired,
-  modal: PropTypes.bool.isRequired,
+  setModal: PropTypes.func,
+  modal: PropTypes.bool,
 }
 
 export default function Modal({
@@ -19,12 +21,20 @@ export default function Modal({
   average,
   setModal,
   modal,
+  ...props
 }) {
   const roundRating = (num) => Math.round(num * 10) / 10
+  const [watchMovie, setWatchMovie] = useState(false)
+  const navigateWatch = useNavigate()
   const getrating = (rating) => {
     return rating > 6 ? 'rating-vote-more' : 'rating-vote-less'
   }
 
+  const handleClick = () => {
+    setWatchMovie(!watchMovie)
+    console.log(!watchMovie)
+    navigateWatch('/watch-movie')
+  }
   return (
     <>
       {modal && (
@@ -85,14 +95,10 @@ export default function Modal({
                 <p>{text}</p>
                 <p className="movie-date">{date}</p>
                 <div className="buttons">
-                  <button className="button-now-modal">
-                   
+                  <button onClick={handleClick} className="button-now-modal">
                     VER AHORA
                   </button>
-                  <button className="button-after-modal">
-                    
-                    VER DESPUES
-                  </button>
+                  <button className="button-after-modal">VER DESPUES</button>
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@ function useMovies() {
   useEffect(() => {
     const fetchMovies = (query) => {
       fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=6b0870438e7196dea8473f4a56574f76`,
+        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${import.meta.env.VITE_API_KEY}`,
       )
         .then((response) => response.json())
         .then((data) => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Modal from '../../modals/Modal'
+import Modal from '../../modals/modal'
 
 import Carousel from '../../components/carousel/carousel'
 
@@ -23,7 +23,7 @@ function MoviesLess() {
 
   useEffect(() => {
     fetch(
-      'https://api.themoviedb.org/3/trending/movie/day?api_key=6b0870438e7196dea8473f4a56574f76',
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${import.meta.env.VITE_API_KEY}`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -83,14 +83,12 @@ function MoviesLess() {
   )
 }
 
-
 export default function LessValuedMovies() {
-
-  return(
-  <>
-  <Carousel />
-  <h1>Peliculas menos valoradas</h1>
-  <MoviesLess/>
-  </>
+  return (
+    <>
+      <Carousel />
+      <h1>Peliculas menos valoradas</h1>
+      <MoviesLess />
+    </>
   )
-} 
+}

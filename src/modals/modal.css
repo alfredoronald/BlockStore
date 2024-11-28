@@ -4,6 +4,7 @@
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 .wacth-movie {
   margin: 100px 150px;
@@ -97,6 +98,7 @@
 }
 
 .button-now-modal {
+  cursor: pointer;
   align-items: center;
   font-weight: 600;
   color: #0c0e16;
@@ -107,6 +109,7 @@
   border: none;
 }
 .button-after-modal {
+  cursor: pointer;
   align-items: center;
   font-weight: 600;
   color: #fed941;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import './movies.css'
-import Modal from '../../modals/Modal'
+import Modal from '../../modals/modal'
 
 export default function Movies() {
   const roundRating = (num) => Math.round(num * 10) / 10
@@ -23,7 +23,7 @@ export default function Movies() {
 
   useEffect(() => {
     fetch(
-      'https://api.themoviedb.org/3/movie/now_playing?api_key=6b0870438e7196dea8473f4a56574f76',
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}`,
     )
       .then((res) => res.json())
       .then((data) => {

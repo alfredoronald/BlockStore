@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useMovies from '../../hooks/useMovies'
-import Modal from '../../modals/Modal'
+import Modal from '../../modals/modal'
 import './no-results.css'
 
 function ListofMovies({ movies }) {
