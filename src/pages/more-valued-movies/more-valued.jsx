@@ -2,35 +2,19 @@ import { useEffect, useState } from 'react'
 import Modal from '../../modals/modal'
 
 import Carousel from '../../components/carousel/carousel'
+import { closeModal, openModal } from '../../hooks/useModal'
+import useMovies from '../../hooks/useMovies'
 
 function MoviesMore() {
   const roundRating = (num) => Math.round(num * 10) / 10
-  const [movies, setMovies] = useState([])
-  const [modal, setModal] = useState(false)
+  const { movies } = useMovies()
   const [selectedMovie, setSelectedMovie] = useState(null)
+  const [modal, setModal] = useState(false)
 
-  const openModal = (movie) => {
-    setSelectedMovie(movie)
-    setModal(true)
-  }
-  const closeModal = () => {
-    setSelectedMovie(null)
-    setModal(false)
-  }
   const getrating = (rating) => {
     return rating > 6 ? 'rating-vote-more' : 'rating-vote-less'
   }
 
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${import.meta.env.VITE_API_KEY}}`,
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results)
-      })
-      .catch((error) => console.error('Error en obtener lo datos' + error))
-  }, [])
   const filteredMovies = movies.filter((movie) => movie.vote_average > 6)
   return (
     <>
@@ -61,7 +45,7 @@ function MoviesMore() {
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
                   className="card-images"
-                  onClick={() => openModal(movie)}
+                  onClick={() => openModal(movie, setSelectedMovie, setModal)}
                 />
               </div>
             </ul>
@@ -74,7 +58,7 @@ function MoviesMore() {
             date={selectedMovie.release_date}
             image={selectedMovie.poster_path}
             average={selectedMovie.vote_average}
-            setModal={closeModal}
+            setModal={() => closeModal(setSelectedMovie, setModal)}
             modal={modal}
           />
         )}

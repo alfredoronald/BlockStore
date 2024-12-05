@@ -1,9 +1,9 @@
-import useMovies from '../../hooks/useMovies'
+import useSearchMovies from '../../hooks/useSearchMovies'
 import Prueba from '../carousel/carousel'
 import MovieList from './results-search'
 
 export default function SearchMovies() {
-  const { movies, keyword } = useMovies()
+  const { movies, keyword } = useSearchMovies()
   return (
     <>
       <Prueba />

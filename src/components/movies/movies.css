@@ -11,6 +11,7 @@
   border-radius: 10px;
   width: 220px;
   height: 330px;
+  cursor: pointer;
 }
 
 .rating-vote {

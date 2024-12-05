@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useMovies from '../../hooks/useMovies'
+import useSearchMovies from '../../hooks/useSearchMovies'
 import Modal from '../../modals/modal'
 import './no-results.css'
 
@@ -80,7 +80,7 @@ function NoMoviesResults({ keyword }) {
 }
 
 function ResultsMovies() {
-  const { movies, keyword } = useMovies()
+  const { movies, keyword } = useSearchMovies()
   const list = movies?.length > 0
   return list ? (
     <ListofMovies movies={movies} />
