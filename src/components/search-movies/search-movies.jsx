@@ -1,4 +1,4 @@
-import useSearchMovies from '../../hooks/useSearchMovies'
+import useSearchMovies from '@/hooks/useSearchMovies'
 import Prueba from '../carousel/carousel'
 import MovieList from './results-search'
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import './movies.css'
-import Modal from '../../modals/modal'
+import Modal from '@/modals/modal'
 
 export default function Movies() {
   const roundRating = (num) => Math.round(num * 10) / 10

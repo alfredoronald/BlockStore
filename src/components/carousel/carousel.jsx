@@ -1,7 +1,7 @@
 import Glide from '@glidejs/glide'
-import './carousel.css'
 import { useEffect, useState } from 'react'
 import '@glidejs/glide/dist/css/glide.core.min.css'
+import './carousel.css'
 
 export default function Carousel({ movies }) {
   const [moviesCarousel, setMoviesCarousel] = useState([])
@@ -56,7 +56,7 @@ export default function Carousel({ movies }) {
               </div>
             </li>
             <li className="glide__slide">
-              <img src="../../../public/raya.png" alt="mulan-img" />
+              <img src="/raya.png" alt="mulan-img" />
               <div className="buttons-wacht">
                 <button onClick={handleClick} className="button-now">
                   VER AHORA
@@ -67,7 +67,7 @@ export default function Carousel({ movies }) {
               </div>
             </li>
             <li className="glide__slide">
-              <img src="../../../public/unidos.png" alt="mulan-img" />
+              <img src="/unidos.png" alt="mulan-img" />
               <div className="buttons-wacht">
                 <button onClick={handleClick} className="button-now">
                   VER AHORA

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import useSearchMovies from '../../hooks/useSearchMovies'
-import Modal from '../../modals/modal'
+import useSearchMovies from '@/hooks/useSearchMovies'
+import Modal from '@/modals/modal'
 import './no-results.css'
 
 function ListofMovies({ movies }) {

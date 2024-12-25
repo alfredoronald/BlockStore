@@ -22,7 +22,7 @@ export default function Navbar() {
     <header className="navigation">
       <div className="navigation-logo">
         <a href="">
-          <img src="../../../public/logo-blockBuster.png" alt="logo" />
+          <img src="/logo-blockBuster.png" alt="logo" />
         </a>
       </div>
       <nav className="navigation-link">

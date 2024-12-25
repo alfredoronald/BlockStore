@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import Modal from '../../modals/modal'
+import Modal from '@/modals/modal'
 
-import Carousel from '../../components/carousel/carousel'
-import { closeModal, openModal } from '../../hooks/useModal'
-import useMovies from '../../hooks/useMovies'
+import Carousel from '@/components/carousel/carousel'
+import { closeModal, openModal } from '@/hooks/useModal'
+import useMovies from '@/hooks/useMovies'
 function MoviesLess() {
   const roundRating = (num) => Math.round(num * 10) / 10
 

@@ -1,6 +1,6 @@
-import Carousel from '../../components/carousel/carousel'
+import Carousel from '@/components/carousel/carousel'
 
-import Movies from '../../components/movies/movies'
+import Movies from '@/components/movies/movies'
 
 export default function AllMovies() {
   return (

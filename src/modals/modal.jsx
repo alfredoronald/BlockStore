@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
-import './modal.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './modal.css'
 
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
