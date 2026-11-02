@@ -2,34 +2,57 @@
   text-align: center;
   margin-top: 30px;
 }
+
 .glide {
   margin-top: 40px;
 }
-.buttons-wacht {
-  cursor: pointer;
-  margin-left: 100px;
-  display: flex;
-  gap: 20px;
-  margin-top: -80px;
-  margin-bottom: 60px;
+
+.carousel .glide__slide {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
 }
-.button-now {
-  cursor: pointer;
-  font-weight: 600;
-  color: #0c0e16;
-  font-size: 18px;
-  padding: 10px 24px;
-  border-radius: 4px;
-  background: #fed941;
-  border: none;
+
+.carousel__image {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 42vw, 520px);
+  object-fit: cover;
+  object-position: center;
 }
-.button-after {
-  cursor: pointer;
-  font-weight: 600;
-  color: #fed941;
-  font-size: 18px;
-  border-radius: 4px;
-  padding: 10px 24px;
-  background-color: #0c0e16;
-  border: 1px solid #fed941;
+
+.carousel .watch-buttons {
+  position: absolute;
+  left: clamp(16px, 6vw, 100px);
+  bottom: clamp(16px, 5vw, 60px);
+}
+
+/* Glide clona nodos con cloneNode: los botones clonados no tienen handlers de React */
+.carousel .glide__slide--clone .watch-buttons {
+  pointer-events: none;
+}
+
+.carousel .glide__bullets {
+  left: auto;
+  right: 24px;
+  bottom: 16px;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .carousel__image {
+    height: 320px;
+  }
+
+  .carousel .watch-buttons {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .carousel .glide__bullets {
+    top: 16px;
+    right: 16px;
+    bottom: auto;
+  }
 }
