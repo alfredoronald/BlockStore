@@ -23,15 +23,18 @@ function App() {
             path="/modal"
             element={
               <Modal
-                title="default"
-                text="text"
-                date="date"
-                image="image"
-                average="averge"
+                movie={{
+                  title: 'default',
+                  overview: 'text',
+                  release_date: 'date',
+                  poster_path: 'image',
+                  vote_average: 0,
+                }}
               />
             }
           />
           <Route path="/watch-movie" element={<WatchMovie />} />
+          <Route path="/watch-movie/:id" element={<WatchMovie />} />
         </Routes>
       </Router>
     </>

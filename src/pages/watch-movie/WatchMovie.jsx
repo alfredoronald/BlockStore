@@ -1,27 +1,73 @@
-import React, { useState } from 'react'
-import Movies from '../../components/movies/movies'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { tmdbFetch } from '@/lib/tmdb'
+import Movies from '@/components/movies/movies'
+import './WatchMovie.css'
 
-const WatchMovie = ({ movies, title, descripition }) => {
-  const [selectWatchMovie, setSelectedWatchMpvie] = useState([])
+function pickVideo(videos = []) {
+  const trailerMovie = videos.filter((video) => video.site === 'YouTube')
+
+  return (
+    trailerMovie.find((video) => video.type === 'Trailer' && video.official) ||
+    trailerMovie.find((video) => video.type === 'Trailer') ||
+    trailerMovie.find((video) => video.type === 'Teaser') ||
+    trailerMovie[0] ||
+    null
+  )
+}
+
+export default function WatchMovie() {
+  const { id } = useParams()
+  const [movie, setMovie] = useState(null)
+  const [video, setVideo] = useState(null)
+
+  useEffect(() => {
+    if (!id) return
+
+    let cancelled = false
+
+    Promise.all([tmdbFetch(`/movie/${id}`), tmdbFetch(`/movie/${id}/videos`)])
+      .then(([movieData, videosData]) => {
+        if (cancelled) return
+        setMovie(movieData)
+        setVideo(pickVideo(videosData.results))
+      })
+      .catch((error) => console.error('Error al obtener la película', error))
+
+    return () => {
+      cancelled = true
+    }
+  }, [id])
 
   return (
     <>
-      <h1>Nombre de la Pelicula</h1>
-      <div>
-        <video height="400px" width="100%" src="" autoPlay muted controls>
-          <source />
-        </video>
+      <h1>{movie?.title || 'Nombre de la Pelicula'}</h1>
+      <div className="watch-movie">
+        {video ? (
+          <div className="watch-movie__player">
+            <iframe
+              src={`https://www.youtube.com/embed/${video.key}?rel=0`}
+              title={video.name}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        ) : (
+          <p className="watch-movie__empty">
+            {movie
+              ? 'No hay tráiler disponible para esta película.'
+              : 'Cargando tráiler...'}
+          </p>
+        )}
         <article>
-          <span>Ficcion asdfkaiosjfoi</span>
-          <p>{descripition}</p>
+          <span>{movie?.release_date || 'Ficcion'}</span>
+          <p>{movie?.overview}</p>
         </article>
         <section>
           <h1>Peliculas Similares</h1>
-          <Movies movies={movies} />
+          <Movies />
         </section>
       </div>
     </>
   )
 }
-
-export default WatchMovie
