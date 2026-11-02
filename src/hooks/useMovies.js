@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react'
+import { tmdbFetch } from '@/lib/tmdb'
 
 export function useMovies() {
   const [movies, setMovies] = useState([])
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${import.meta.env.VITE_API_KEY}`,
-    )
-      .then((res) => res.json())
+    tmdbFetch('/trending/movie/day')
       .then((data) => {
         setMovies(data.results || [])
       })
-      .catch((error) => console.error('Error en obtener lo datos' + error))
+      .catch((error) => console.error('Error al obtener los datos', error))
   }, [])
   return { movies }
 }

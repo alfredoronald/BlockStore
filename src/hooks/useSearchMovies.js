@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { tmdbFetch } from '@/lib/tmdb'
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search)
@@ -11,15 +12,12 @@ function useSearchMovies() {
   const keyword = query.get('query') || ''
   useEffect(() => {
     const fetchMovies = (query) => {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${import.meta.env.VITE_API_KEY}`,
-      )
-        .then((response) => response.json())
+      tmdbFetch(`/search/movie?query=${encodeURIComponent(query)}`)
         .then((data) => {
-          setMovies(data.results)
+          setMovies(data.results || [])
         })
         .catch((error) =>
-          console.error('Nose lograron obtener lo datos:' + error),
+          console.error('No se lograron obtener los datos:', error),
         )
     }
     if (keyword) {

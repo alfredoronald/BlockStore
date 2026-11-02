@@ -1,6 +1,7 @@
 import Glide from '@glidejs/glide'
 import { useEffect, useState } from 'react'
 import '@glidejs/glide/dist/css/glide.core.min.css'
+import { tmdbFetch } from '@/lib/tmdb'
 import './carousel.css'
 
 export default function Carousel({ movies }) {
@@ -11,14 +12,11 @@ export default function Carousel({ movies }) {
     console.log(!watchMovie)
   }
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}`,
-    )
-      .then((res) => res.json())
+    tmdbFetch('/movie/now_playing')
       .then((data) => {
-        setMoviesCarousel(data.results)
+        setMoviesCarousel(data.results || [])
       })
-      .catch((error) => console.error('Error en obtener lo datos' + error))
+      .catch((error) => console.error('Error al obtener los datos', error))
   }, [])
 
   useEffect(() => {

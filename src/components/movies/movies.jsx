@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { tmdbFetch } from '@/lib/tmdb'
 import './movies.css'
 import Modal from '@/modals/modal'
 
@@ -22,14 +23,11 @@ export default function Movies() {
   }
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}`,
-    )
-      .then((res) => res.json())
+    tmdbFetch('/movie/now_playing')
       .then((data) => {
-        setMovies(data.results)
+        setMovies(data.results || [])
       })
-      .catch((error) => console.error('Error en obtener lo datos' + error))
+      .catch((error) => console.error('Error al obtener los datos', error))
   }, [])
   return (
     <>
