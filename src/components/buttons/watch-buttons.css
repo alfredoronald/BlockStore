@@ -1,0 +1,65 @@
+.watch-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.watch-buttons--modal {
+  gap: 28px;
+}
+
+.watch-buttons__now,
+.watch-buttons__later {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 24px;
+  border-radius: 4px;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.watch-buttons--modal .watch-buttons__now,
+.watch-buttons--modal .watch-buttons__later {
+  padding: 10px 80px;
+}
+
+.watch-buttons__now {
+  color: #0c0e16;
+  background: #fed941;
+  border: none;
+}
+
+.watch-buttons__later {
+  color: #fed941;
+  background: #0c0e16;
+  border: 1px solid #fed941;
+}
+
+.watch-buttons__now:hover {
+  background: #ffe07a;
+}
+
+.watch-buttons__later:hover {
+  background: #fed941;
+  color: #0c0e16;
+}
+
+.watch-buttons__now:focus-visible,
+.watch-buttons__later:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .watch-buttons {
+    gap: 12px;
+  }
+
+  .watch-buttons__now,
+  .watch-buttons__later {
+    flex: 1;
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}

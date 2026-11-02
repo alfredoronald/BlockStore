@@ -1,40 +1,30 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import WatchButtons from '@/components/buttons/watch-buttons'
 import './modal.css'
 
 Modal.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  average: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    release_date: PropTypes.string,
+    poster_path: PropTypes.string,
+    vote_average: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }).isRequired,
   setModal: PropTypes.func,
   modal: PropTypes.bool,
 }
 
-export default function Modal({
-  title,
-  text,
-  date,
-  image,
-  average,
-  setModal,
-  modal,
-  ...props
-}) {
+export default function Modal({ movie, setModal, modal }) {
+  if (!movie) return null
+
   const roundRating = (num) => Math.round(num * 10) / 10
-  const [watchMovie, setWatchMovie] = useState(false)
-  const navigateWatch = useNavigate()
   const getrating = (rating) => {
     return rating > 6 ? 'rating-vote-more' : 'rating-vote-less'
   }
 
-  const handleClick = () => {
-    setWatchMovie(!watchMovie)
-    console.log(!watchMovie)
-    navigateWatch('/watch-movie')
-  }
+  const { title, overview, release_date, poster_path, vote_average } = movie
+
   return (
     <>
       {modal && (
@@ -42,7 +32,7 @@ export default function Modal({
           <article className="modal-content">
             <div className="wacth-movie">
               <div className="rotate-image">
-                <div className={`modal-rating-vote ${getrating(average)}`}>
+                <div className={`modal-rating-vote ${getrating(vote_average)}`}>
                   <strong className="m-rating-movies">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -56,12 +46,12 @@ export default function Modal({
                         fill="#FED941"
                       />
                     </svg>
-                    {roundRating(average)}
+                    {roundRating(vote_average)}
                   </strong>
                 </div>
                 <div className="card">
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${image}`}
+                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                     alt={title}
                     className="modal-image"
                   />
@@ -92,14 +82,9 @@ export default function Modal({
                   </button>
                 </div>
                 <h2>{title}</h2>
-                <p>{text}</p>
-                <p className="movie-date">{date}</p>
-                <div className="buttons">
-                  <button onClick={handleClick} className="button-now-modal">
-                    VER AHORA
-                  </button>
-                  <button className="button-after-modal">VER DESPUES</button>
-                </div>
+                <p>{overview}</p>
+                <p className="movie-date">{release_date}</p>
+                <WatchButtons movie={movie} variant="modal" />
               </div>
             </div>
           </article>

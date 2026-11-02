@@ -53,11 +53,7 @@ function MoviesLess() {
         })}
         {selectedMovie && (
           <Modal
-            title={selectedMovie.title}
-            text={selectedMovie.overview}
-            date={selectedMovie.release_date}
-            image={selectedMovie.poster_path}
-            average={selectedMovie.vote_average}
+            movie={selectedMovie}
             setModal={() => closeModal(setSelectedMovie, setModal)}
             modal={modal}
           />

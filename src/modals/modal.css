@@ -53,11 +53,6 @@
 .modal-movies .movie-date {
   color: rgb(133, 133, 133);
 }
-.buttons {
-  display: flex;
-  gap: 28px;
-}
-
 .modal-image {
   display: flex;
   position: cover;
@@ -97,25 +92,3 @@
   display: flex;
 }
 
-.button-now-modal {
-  cursor: pointer;
-  align-items: center;
-  font-weight: 600;
-  color: #0c0e16;
-  font-size: 18px;
-  padding: 10px 80px;
-  border-radius: 4px;
-  background: #fed941;
-  border: none;
-}
-.button-after-modal {
-  cursor: pointer;
-  align-items: center;
-  font-weight: 600;
-  color: #fed941;
-  font-size: 18px;
-  border-radius: 4px;
-  padding: 10px 80px;
-  background-color: #0c0e16;
-  border: 1px solid #fed941;
-}

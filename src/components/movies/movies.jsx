@@ -65,15 +65,7 @@ export default function Movies() {
           )
         })}
         {selectedMovie && (
-          <Modal
-            title={selectedMovie.title}
-            text={selectedMovie.overview}
-            date={selectedMovie.release_date}
-            image={selectedMovie.poster_path}
-            average={selectedMovie.vote_average}
-            setModal={closeModal}
-            modal={modal}
-          />
+          <Modal movie={selectedMovie} setModal={closeModal} modal={modal} />
         )}
       </section>
     </>
